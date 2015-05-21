@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
 
         if(item.getItemId() == R.id.action_do_task) {
             if(isOnLine()){
-                requestData("http://saperpacd.acron.corp:8000/sap(bD10ciZjPTEwMA==)/bc/bsp/sap/zmt_mob_app02/iletisim_.xml");
+                requestData("http://destek.acron.com.tr/sap(bD10ciZjPTIwMA==)/bc/bsp/sap/zmt_mob_app02/iletisim_.xml");
             }else{
                 Toast.makeText(this, "Network isn't avaliable", Toast.LENGTH_LONG).show();
             }
