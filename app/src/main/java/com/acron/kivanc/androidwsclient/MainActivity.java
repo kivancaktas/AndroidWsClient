@@ -1,12 +1,11 @@
 package com.acron.kivanc.androidwsclient;
 
+import android.app.ListActivity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,15 +15,15 @@ import android.widget.Toast;
 
 import com.acron.kivanc.androidwsclient.model.Contacts;
 import com.acron.kivanc.androidwsclient.parsers.ContactXMLParser;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ListActivity {
 
     TextView output;
     ProgressBar pb;
     List<MyTask> tasks;
-
     List<Contacts> contactsList;
 
     @Override
@@ -32,8 +31,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Initilize the etxt view
-        output = (TextView) findViewById(R.id.textView);
-        output.setMovementMethod(new ScrollingMovementMethod());
+//        output = (TextView) findViewById(R.id.textView);
+//        output.setMovementMethod(new ScrollingMovementMethod());
 
         pb = (ProgressBar) findViewById(R.id.progressBar1);
         pb.setVisibility(View.INVISIBLE);
@@ -50,10 +49,11 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+//http://saperpacd.acron.corp:8000/sap(bD10ciZjPTEwMA==)/bc/bsp/sap/zmt_mob_app02/iletisim_.xml
+// http://destek.acron.com.tr/sap(bD10ciZjPTEwMA==)/bc/bsp/sap/zmt_mob_app02/iletisim_.xml
         if(item.getItemId() == R.id.action_do_task) {
             if(isOnLine()){
-                requestData("http://saperpacd.acron.corp:8000/sap(bD10ciZjPTEwMA==)/bc/bsp/sap/zmt_mob_app02/iletisim_.xml");
+                requestData("http://destek.acron.com.tr/sap(bD10ciZjPTEwMA==)/bc/bsp/sap/zmt_mob_app02/iletisim_.xml");
             }else{
                 Toast.makeText(this, "Network isn't avaliable", Toast.LENGTH_LONG).show();
             }
@@ -68,11 +68,8 @@ public class MainActivity extends ActionBarActivity {
 
     protected void updateDisplay() {
 
-        if(contactsList !=null) {
-            for (Contacts contacts : contactsList) {
-                output.append(contacts.getBNAME() + "\n");
-            }
-        }
+        ContactAdapter adapter = new ContactAdapter(this, R.layout.item_contact,contactsList);
+        setListAdapter(adapter);
     }
 
     protected boolean isOnLine(){
