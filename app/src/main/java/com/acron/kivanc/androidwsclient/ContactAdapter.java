@@ -30,7 +30,7 @@ public class ContactAdapter extends ArrayAdapter<Contacts>{
         View view = inflater.inflate(R.layout.item_contact, parent, false);
         Contacts contact = contactList.get(position);
         TextView tv = (TextView) view.findViewById(R.id.textView1);
-        tv.setText(contact.getBNAME());
+        tv.setText(contact.getNAME_FIRST());
 
 
         return view;

@@ -1,5 +1,7 @@
 package com.acron.kivanc.androidwsclient.model;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by KIVANC on 15.5.2015.
  */
@@ -18,6 +20,7 @@ public class Contacts {
     private String ISGIRIS;
     private String DGTRH;
     private String INDEX;
+    private Bitmap bitmap;
 
     public String getBNAME() {
         return BNAME;
@@ -128,6 +131,15 @@ public class Contacts {
 
     public void setINDEX(String INDEX) {
         this.INDEX = INDEX;
+    }
+
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
 }
