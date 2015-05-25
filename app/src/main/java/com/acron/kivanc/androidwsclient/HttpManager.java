@@ -55,8 +55,10 @@ public class HttpManager {
         try{
             URL url = new URL(uri);
             con = (HttpURLConnection) url.openConnection();
+            con.setInstanceFollowRedirects(true);
+            HttpURLConnection.setFollowRedirects(true);
 
-            con.addRequestProperty("Authorization", loginBuilder.toString());
+//            con.addRequestProperty("Authorization", loginBuilder.toString());
 
             StringBuilder sb = new StringBuilder();
             reader  = new BufferedReader(new InputStreamReader(con.getInputStream()));

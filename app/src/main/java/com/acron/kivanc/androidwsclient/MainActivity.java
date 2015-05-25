@@ -53,7 +53,7 @@ public class MainActivity extends ListActivity {
 // http://destek.acron.com.tr/sap(bD10ciZjPTEwMA==)/bc/bsp/sap/zmt_mob_app02/iletisim_.xml
         if(item.getItemId() == R.id.action_do_task) {
             if(isOnLine()){
-                requestData("http://destek.acron.com.tr/sap(bD10ciZjPTEwMA==)/bc/bsp/sap/zmt_mob_app02/iletisim_.xml");
+                requestData("http://destek.acron.com.tr/sap/bc/bsp/sap/zmt_mob_app02/iletisim_.xml");
             }else{
                 Toast.makeText(this, "Network isn't avaliable", Toast.LENGTH_LONG).show();
             }
